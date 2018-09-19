@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="50dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="50dp">
 
         <TextView
             android:id="@+id/result_text_bmi"
@@ -17,8 +19,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="70dp"
             android:text="Enter your BMI"
-            android:textColor="#36B13F"
             android:textAlignment="center"
+            android:textColor="#36B13F"
             android:textSize="40dp" />
 
         <TextView
@@ -26,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="70dp"
-            android:textAlignment="center"
             android:text="Calculate Now!"
+            android:textAlignment="center"
             android:textSize="20dp" />
 
         <EditText
