@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="30dp"
+        android:layout_margin="50dp"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/result_text_bmi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:text="Enter your BMI"
+            android:textColor="#36B13F"
+            android:textAlignment="center"
+            android:textSize="40dp" />
+
+        <TextView
+            android:id="@+id/bmi_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="70dp"
+            android:textAlignment="center"
+            android:text="Calculate Now!"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/height"
-            android:drawableLeft="@drawable/icon_height"
-            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/icon_height"
+            android:drawablePadding="10dp"
             android:hint="Height"
-            android:inputType="textEmailAddress"
-            android:layout_margin="10dp" />
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/weight"
-            android:drawableLeft="@drawable/icon_weight"
-            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/icon_weight"
+            android:drawablePadding="10dp"
             android:hint="Weight"
-            android:inputType="textEmailAddress"
-            android:layout_margin="10dp" />
+            android:inputType="numberDecimal" />
 
         <Button
             android:id="@+id/button_bmi_calculate"
