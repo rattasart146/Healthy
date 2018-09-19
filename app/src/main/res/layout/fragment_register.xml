@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/email"
+            android:drawableLeft="@drawable/icon_mail"
+            android:drawablePadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_margin="10dp" />
+
+        <EditText
+            android:id="@+id/register_password"
+            android:drawableLeft="@drawable/icon_lock_outline"
+            android:drawablePadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textEmailAddress"
+            android:layout_margin="10dp" />
+
+        <EditText
+            android:id="@+id/register_re_password"
+            android:drawableLeft="@drawable/icon_lock"
+            android:drawablePadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm password"
+            android:inputType="textEmailAddress"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register new account" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
