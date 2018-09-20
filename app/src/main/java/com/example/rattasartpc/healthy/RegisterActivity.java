@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends Fragment{
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
