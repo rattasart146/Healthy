@@ -23,25 +23,44 @@ public class MenuActivity extends Fragment {
 
     ArrayList<String> menu = new ArrayList<>();
 
+    public MenuActivity(){
+
+        menu.add("BMI");
+        menu.add("Weight");
+        menu.add("Log out");
+
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        menu.add("BMI");
-
         ListView menuList = getView().findViewById(R.id.menu_list_view);
         final ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
                 getActivity(),
-                android.R.layout.simple_expandable_list_item_1,
+                android.R.layout.simple_list_item_1,
                 menu
         );
+
+        menuList.setAdapter(menuAdapter);
 
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("MENU", "Select" + menu.get(position));
-                menu.add("new Value");
-                menuAdapter.notifyDataSetChanged();
+                if (menu.get(position).equals("BMI")){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
+                    Log.d("MENU", "Select" + menu.get(position));
+                }
+                if (menu.get(position).equals("Weight")){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
+                    Log.d("MENU", "Select" + menu.get(position));
+                }
+                if (menu.get(position).equals("Log out")){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
+                    Log.d("MENU", "Select" + menu.get(position));
+                }
+//                menu.add("new Value");
+//                menuAdapter.notifyDataSetChanged();
             }
         });
 

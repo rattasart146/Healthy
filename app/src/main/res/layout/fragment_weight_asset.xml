@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="50dp">
+
+    <TextView
+        android:id="@+id/menu_item_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:text="64"
+        android:textColor="#36B13F"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/menu_item_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/menu_item_weight"
+        android:layout_alignParentBottom="false"
+        android:layout_toRightOf="@+id/menu_item_weight"
+        android:text="kg" />
+
+    <TextView
+
+        android:id="@+id/menu_item_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/icon_down"
+        android:text="ลง"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/menu_item_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_item_weight"
+        android:text="21 กันยายน 2018"
+        android:textColor="#70e077" />
+</RelativeLayout>

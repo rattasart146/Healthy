@@ -32,13 +32,13 @@ public class LoginActivity extends Fragment{
                     Toast.makeText(getActivity(),"กรุณาระบุข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
                     Log.i("LOGIN","USER OR PASSWORD IS EMPTY");
                 }
-                else if(userNameStr.equals("admin") == passwordStr.equals("admin")){
+                else if(userNameStr.equals("admin") && passwordStr.equals("admin")){
                     Toast.makeText(getActivity(),"User or Password ไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                     Log.i("LOGIN","INVALID USER OR PASSWORD");
                 }
                 else {
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
-                    Log.i("LOGIN","GOTO BMI");
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
+                    Log.i("LOGIN","GOTO MENU");
                 }
 
             }
