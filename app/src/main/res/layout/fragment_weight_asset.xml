@@ -7,7 +7,7 @@
         android:layout_margin="50dp">
 
     <TextView
-        android:id="@+id/menu_item_weight"
+        android:id="@+id/weight_item_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
@@ -16,17 +16,17 @@
         android:textSize="40dp" />
 
     <TextView
-        android:id="@+id/menu_item_unit"
+        android:id="@+id/weight_item_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/menu_item_weight"
+        android:layout_alignBaseline="@+id/weight_item_weight"
         android:layout_alignParentBottom="false"
-        android:layout_toRightOf="@+id/menu_item_weight"
+        android:layout_toRightOf="@+id/weight_item_weight"
         android:text="kg" />
 
     <TextView
 
-        android:id="@+id/menu_item_status"
+        android:id="@+id/weight_item_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -36,10 +36,10 @@
         android:textSize="40dp" />
 
     <TextView
-        android:id="@+id/menu_item_date"
+        android:id="@+id/weight_item_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/menu_item_weight"
+        android:layout_below="@id/weight_item_weight"
         android:text="21 กันยายน 2018"
         android:textColor="#70e077" />
 </RelativeLayout>
