@@ -12,7 +12,14 @@ import android.widget.ListView;
 
 import com.example.rattasartpc.healthy.R;
 
+import java.util.ArrayList;
+
 public class WeightActivity extends Fragment{
+
+    private String userId;
+    private ArrayList<WeightAsset> weightAsset = new ArrayList<WeightAsset>();
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -23,7 +30,7 @@ public class WeightActivity extends Fragment{
 //    final ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
 //            getActivity(),
 //            android.R.layout.simple_list_item_1,
-//            menu
+//            weightAsset
 //    );
 
     @Override
