@@ -26,15 +26,16 @@ public class WeightActivity extends Fragment{
         return inflater.inflate(R.layout.fragment_weight, container, false);
     }
 
-//    ListView menuList = getView().findViewById(R.id.menu_list_view);
-//    final ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
-//            getActivity(),
-//            android.R.layout.simple_list_item_1,
-//            weightAsset
-//    );
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        this.userId = "admin";
+        final ListView weightList = (ListView) getView().findViewById(R.id.weight_list);
+        final WeightAssetAdapter weightConfigItem =  new WeightAssetAdapter(
+                getActivity(),
+                R.layout.fragment_weight_asset,
+                weightAsset
+        );
     }
 }
