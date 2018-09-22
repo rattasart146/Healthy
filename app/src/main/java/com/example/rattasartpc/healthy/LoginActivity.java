@@ -12,49 +12,92 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends Fragment{
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+public class LoginActivity extends Fragment {
+
+    private FirebaseUser _user = FirebaseAuth.getInstance().getCurrentUser();
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_login, container, false);
+
+    }
+
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Button buttonLogin = (Button) getView().findViewById(R.id.button_login);
-        TextView textRegister = (TextView) getView().findViewById(R.id.register);
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+
+        Button loginButton = (Button) getView().findViewById(R.id.button_login);
+
+        //Check Loged In
+        if(_user != null){
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new MenuActivity()).addToBackStack(null).commit();
+        }
+
+        loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                TextView userTextField = (TextView) getView().findViewById(R.id.user_id);
+                TextView passwordTextField = (TextView) getView().findViewById(R.id.password);
 
-                TextView userName = (TextView) getView().findViewById(R.id.user_id);
-                TextView password = (TextView) getView().findViewById(R.id.password);
-                String userNameStr = userName.getText().toString();
-                String passwordStr = password.getText().toString();
+                String userTextFieldStr = userTextField.getText().toString();
+                String passwordTextFieldStr = passwordTextField.getText().toString();
 
-                if(userNameStr.isEmpty() || passwordStr.isEmpty()){
-                    Toast.makeText(getActivity(),"กรุณาระบุข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
+                if(userTextFieldStr.isEmpty() || passwordTextFieldStr.isEmpty()){
                     Log.i("LOGIN","USER OR PASSWORD IS EMPTY");
-                }
-                else if(userNameStr.equals("admin") && passwordStr.equals("admin")){
-                    Toast.makeText(getActivity(),"User or Password ไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "กรุณาระบุ Username หรือ Password",Toast.LENGTH_SHORT).show();
+                }else if(userTextField.equals("admin") && passwordTextField.equals("admin")){
                     Log.i("LOGIN","INVALID USER OR PASSWORD");
-                }
-                else {
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
-                    Log.i("LOGIN","GOTO MENU");
-                }
+                    Toast.makeText(getActivity(), "Username และ Password ไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
 
+                }else{
+                    final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    mAuth.signInWithEmailAndPassword(userTextFieldStr, passwordTextFieldStr).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            _user = FirebaseAuth.getInstance().getCurrentUser();
+                            if(task.isSuccessful()){
+                                if(_user.isEmailVerified()){
+                                    Log.i("LOGIN", "Complete");
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
+                                }else{
+                                    Toast.makeText(getActivity(), "กรุณายืนยัน E-Mail", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                }
             }
+
         });
-        textRegister.setOnClickListener(new View.OnClickListener() {
+
+        TextView signUpButton = (TextView) getView().findViewById(R.id.register);
+        signUpButton.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new RegisterActivity()).addToBackStack(null).commit();
-                Log.i("Login","GOTO REGISTER");
             }
         });
+
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
-    }
 }

@@ -27,7 +27,7 @@ import java.util.Calendar;;
 
 public class WeightForm extends Fragment{
 
-    ArrayList<WeightAsset> weightStores = new ArrayList<>();
+    ArrayList<WeightAsset> weightAsset = new ArrayList<>();
 
     @Nullable
     @Override

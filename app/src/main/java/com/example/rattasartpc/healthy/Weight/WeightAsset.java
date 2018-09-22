@@ -4,7 +4,9 @@ public class WeightAsset {
     float weight;
     String date;
     String status;
+    public WeightAsset(){
 
+    }
     public WeightAsset(float weight, String date, String status) {
         this.weight = weight;
         this.date = date;

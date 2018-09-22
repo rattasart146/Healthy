@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/weight_item_weight"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
@@ -22,7 +23,8 @@
         android:layout_alignBaseline="@+id/weight_item_weight"
         android:layout_alignParentBottom="false"
         android:layout_toRightOf="@+id/weight_item_weight"
-        android:text="kg" />
+        android:text="kg"
+        android:textSize="20dp"/>
 
     <TextView
 
@@ -31,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:drawableLeft="@drawable/icon_down"
+        android:layout_marginTop="10dp"
         android:text="ลง"
         android:textSize="40dp" />
 
@@ -41,5 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/weight_item_weight"
         android:text="21 กันยายน 2018"
+        android:layout_marginBottom="10dp"
         android:textColor="#70e077" />
 </RelativeLayout>

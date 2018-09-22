@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.rattasartpc.healthy.Weight.WeightActivity;
+
 import java.util.ArrayList;
 
 public class MenuActivity extends Fragment {
@@ -52,11 +54,11 @@ public class MenuActivity extends Fragment {
                     Log.d("MENU", "Select" + menu.get(position));
                 }
                 if (menu.get(position).equals("Weight")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightActivity()).addToBackStack(null).commit();
                     Log.d("MENU", "Select" + menu.get(position));
                 }
                 if (menu.get(position).equals("Log out")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutActivity()).addToBackStack(null).commit();
                     Log.d("MENU", "Select" + menu.get(position));
                 }
 //                menu.add("new Value");
