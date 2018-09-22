@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.rattasartpc.healthy.Weight.WeightActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,7 @@ public class MenuActivity extends Fragment {
         return inflater.inflate(R.layout.fragment_menu, container, false);
     }
 
+    FirebaseUser _user = FirebaseAuth.getInstance().getCurrentUser();
     ArrayList<String> menu = new ArrayList<>();
 
     public MenuActivity(){
@@ -36,35 +39,40 @@ public class MenuActivity extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (_user.isEmailVerified()){
 
-        ListView menuList = getView().findViewById(R.id.menu_list_view);
-        final ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                menu
-        );
+            ListView menuList = getView().findViewById(R.id.menu_list_view);
+            final ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
+                    getActivity(),
+                    android.R.layout.simple_list_item_1,
+                    menu
+            );
 
-        menuList.setAdapter(menuAdapter);
+            menuList.setAdapter(menuAdapter);
 
-        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (menu.get(position).equals("BMI")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
-                    Log.d("MENU", "Select" + menu.get(position));
-                }
-                if (menu.get(position).equals("Weight")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightActivity()).addToBackStack(null).commit();
-                    Log.d("MENU", "Select" + menu.get(position));
-                }
-                if (menu.get(position).equals("Log out")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutActivity()).addToBackStack(null).commit();
-                    Log.d("MENU", "Select" + menu.get(position));
-                }
+            menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (menu.get(position).equals("BMI")){
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIActivity()).addToBackStack(null).commit();
+                        Log.d("MENU", "Select" + menu.get(position));
+                    }
+                    if (menu.get(position).equals("Weight")){
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightActivity()).addToBackStack(null).commit();
+                        Log.d("MENU", "Select" + menu.get(position));
+                    }
+                    if (menu.get(position).equals("Log out")){
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutActivity()).addToBackStack(null).commit();
+                        Log.d("MENU", "Select" + menu.get(position));
+                    }
 //                menu.add("new Value");
 //                menuAdapter.notifyDataSetChanged();
-            }
-        });
+                }
+            });
 
+        }
+        else{
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutActivity()).addToBackStack(null).commit();
+        }
     }
 }
