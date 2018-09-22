@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_view, new WeightActivity()) // new fragment will be replaced instead of main_view
+                    .replace(R.id.main_view, new LoginActivity()) // new fragment will be replaced instead of main_view
                     .commit();
         }
     }
