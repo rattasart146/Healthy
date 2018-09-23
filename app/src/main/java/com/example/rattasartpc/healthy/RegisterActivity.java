@@ -26,14 +26,14 @@ public class RegisterActivity extends Fragment{
     }
 
     boolean checkPassword(String passwrod, String rePassword){
-        if(passwrod.length() > 6){
+        if(passwrod.length() >= 6){
             if(passwrod.equals(rePassword)) {
                 return true;
             }else{
                 Toast.makeText(getActivity(),"Password ไม่ตรงกัน", Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(getActivity(),"Password ต้องมากกว่า 6 ตัวอักษร", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Password ต้องมีอย่างน้อย 6 ตัวอักษร", Toast.LENGTH_SHORT).show();
         }
         return false;
     }
