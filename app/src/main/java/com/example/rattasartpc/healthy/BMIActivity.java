@@ -26,6 +26,7 @@ public class BMIActivity extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Button buttonBMICalculate = getView().findViewById(R.id.button_bmi_calculate);
+        Button backButton = getView().findViewById(R.id.bmi_back);
 
         buttonBMICalculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,14 @@ public class BMIActivity extends Fragment{
                     textBMIView.setText("Your BMI");
                     Log.i("BMI","BMI is value");
                 }
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("BACK", "Back to menu");
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
             }
         });
     }

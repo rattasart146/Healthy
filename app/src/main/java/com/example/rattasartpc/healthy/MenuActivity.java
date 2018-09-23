@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.rattasartpc.healthy.Weight.WeightActivity;
@@ -39,8 +40,8 @@ public class MenuActivity extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (_user.isEmailVerified()){
 
+        if (_user.isEmailVerified()){
             ListView menuList = getView().findViewById(R.id.menu_list_view);
             final ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
                     getActivity(),
@@ -74,5 +75,6 @@ public class MenuActivity extends Fragment {
         else{
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutActivity()).addToBackStack(null).commit();
         }
+
     }
 }

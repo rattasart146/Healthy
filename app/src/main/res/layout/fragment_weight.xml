@@ -10,16 +10,30 @@
         android:layout_margin="50dp">
 
         <Button
+            android:id="@+id/weight_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e6e6e6"
+            android:layout_marginBottom="10dp"
+            android:text="Back" />
+
+        <Button
             android:id="@+id/weight_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#36B13F"
+            android:textColor="#fff"
             android:text="Add weight" />
+
+
 
         <ListView
             android:id="@+id/weight_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             ></ListView>
+
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

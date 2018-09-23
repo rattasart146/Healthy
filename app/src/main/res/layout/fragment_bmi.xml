@@ -5,21 +5,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="50dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="50dp">
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bmi_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e6e6e6"
+            android:text="Back" />
 
         <TextView
             android:id="@+id/result_text_bmi"
@@ -65,6 +62,9 @@
             android:id="@+id/button_bmi_calculate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#36B13F"
+            android:layout_marginBottom="10dp"
+            android:textColor="#fff"
             android:text="Calculate" />
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.rattasartpc.healthy.MenuActivity;
 import com.example.rattasartpc.healthy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,7 +35,15 @@ public class WeightActivity extends Fragment {
     private DocumentSnapshot doc;
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        super.onActivityCreated(savedInstanceState);Button backButton = getView().findViewById(R.id.weight_back);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("BACK", "Back to menu");
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
+            }
+        });
 
         this.uid = _user.getUid();
         final ListView weightList = (ListView) getView().findViewById(R.id.weight_list);
