@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="50dp">
+
+    <TextView
+        android:id="@+id/sleep_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21 กันยายน 2018"
+        android:layout_marginBottom="10dp"
+        android:textColor="#70e077"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/sleep_item_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:00 - 05:30"
+        android:layout_marginTop="20dp"
+        android:textColor="#36B13F"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/sleep_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="07:30"
+        android:textSize="40dp" />
+
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/sleep_form_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:focusable="false"
+            android:hint="Day / Month / Year" />
+
+        <EditText
+            android:id="@+id/sleep_form_sleep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:focusable="false"
+            android:hint="Wake up time" />
+
+        <EditText
+            android:id="@+id/sleep_form_wake"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Sleep time"
+            android:inputType="numberDecimal"
+            android:paddingBottom="20dp" />
+        <Button
+            android:id="@+id/sleep_form_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#36B13F"
+            android:layout_marginBottom="10dp"
+            android:textColor="#fff"
+            android:text="Add Now" />
+
+        <Button
+            android:id="@+id/sleep_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e6e6e6"
+            android:layout_marginBottom="10dp"
+            android:text="Back" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
