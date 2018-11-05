@@ -16,10 +16,28 @@
         android:textSize="14dp" />
 
     <TextView
+        android:id="@+id/sleep_item_wake_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:00"
+        android:layout_marginTop="20dp"
+        android:textColor="#36B13F"
+        android:textSize="25dp" />
+    <TextView
         android:id="@+id/sleep_item_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20:00 - 05:30"
+        android:text=" - "
+        android:layout_toRightOf="@id/sleep_item_wake_time"
+        android:layout_marginTop="20dp"
+        android:textColor="#36B13F"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/sleep_item_sleep_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="05:30"
+        android:layout_toRightOf="@id/sleep_item_length"
         android:layout_marginTop="20dp"
         android:textColor="#36B13F"
         android:textSize="25dp" />
