@@ -28,7 +28,7 @@ public class sleepAssetAdapter extends ArrayAdapter{
 
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View _sleepItem = LayoutInflater.from(context).inflate(R.layout.fragment_weight_asset, parent, false);
+        View _sleepItem = LayoutInflater.from(context).inflate(R.layout.fragment_sleep_asset, parent, false);
         _date = _sleepItem.findViewById(R.id.sleep_item_date);
         _wakeUpTime = _sleepItem.findViewById(R.id.sleep_item_wake_time);
         _sleepTime = _sleepItem.findViewById(R.id.sleep_item_sleep_time);
