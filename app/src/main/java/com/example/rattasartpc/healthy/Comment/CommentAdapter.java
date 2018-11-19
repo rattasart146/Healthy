@@ -41,8 +41,8 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         TextView commentName = commentItem.findViewById(R.id.comment_name);
         TextView commentEmail = commentItem.findViewById(R.id.comment_email);
 
-        commentPostId.setText(comments.get(position).getCommentPostId());
-        commentId.setText(comments.get(position).getCommentId());
+        commentPostId.setText(Integer.toString(comments.get(position).getCommentPostId()));
+        commentId.setText(Integer.toString(comments.get(position).getCommentId()));
         commentContent.setText(comments.get(position).getCommentContent());
         commentName.setText(comments.get(position).getCommentName());
         commentEmail.setText(comments.get(position).getCommentEmail());

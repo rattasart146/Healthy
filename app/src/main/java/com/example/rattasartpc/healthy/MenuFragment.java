@@ -70,7 +70,7 @@ public class MenuFragment extends Fragment {
                         Log.d("MENU", "Select" + menu.get(position));
                     }
                     if (menu.get(position).equals("Post")){
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new PostFragment()).addToBackStack(null).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new PostFragment()).addToBackStack("Menu").commit();
                         Log.d("MENU", "Select" + menu.get(position));
                     }
                     if (menu.get(position).equals("Log out")){

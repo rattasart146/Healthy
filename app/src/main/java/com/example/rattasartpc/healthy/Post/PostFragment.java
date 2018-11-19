@@ -77,13 +77,17 @@ public class PostFragment extends Fragment {
                 try {
                     Response response = client.newCall(request).execute();
                     JSONArray array = new JSONArray(response.body().string());
+                    posts.clear();
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object = array.getJSONObject(i);
                         posts.add(new Post(object.getInt("userId"),
                                 object.getInt("id"),
                                 object.getString("title"),
                                 object.getString("body")
-                        ));
+                            )
+                        );
+
+                        Log.d("checkId", "getView: " + object.getInt("id"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

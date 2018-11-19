@@ -32,6 +32,7 @@ public class CommentFragment extends Fragment {
     private CommentAdapter commentAdapter;
     private ListView commentList;
     private int CURRENT_POST;
+    private Bundle bundle;
     private ArrayList<Comment> comments = new ArrayList<Comment>();
     @Nullable
     @Override
@@ -43,7 +44,10 @@ public class CommentFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Button backButton = getView().findViewById(R.id.comment_back);
-        commentList = (ListView) getView().findViewById(R.id.comment_list);
+        commentList = (ListView) getView().findViewById(R.id.comment_list); if(getArguments() != null){
+            bundle = getArguments();
+            CURRENT_POST = bundle.getInt("postId");
+        }
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,15 +73,16 @@ public class CommentFragment extends Fragment {
                 try {
                     Response response = client.newCall(request).execute();
                     JSONArray array = new JSONArray(response.body().string());
+                    comments.clear();
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object = array.getJSONObject(i);
                         if (object.getInt("postId") == CURRENT_POST) {
                             comments.add(new Comment(
                                     object.getInt("postId"),
                                     object.getInt("id"),
+                                    object.getString("body"),
                                     object.getString("name"),
-                                    object.getString("email"),
-                                    object.getString("body")
+                                    object.getString("email")
                             ));
                         }
                     }
