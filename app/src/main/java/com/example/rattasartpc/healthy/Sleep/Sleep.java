@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class sleepAsset {
+public class Sleep {
 
     private String date;
     private String wakeUpTime;
@@ -27,11 +27,11 @@ public class sleepAsset {
         public static final String USER_ID = "userId";
     }
 
-    public sleepAsset(){
+    public Sleep(){
 
     }
 
-    public sleepAsset(String date, String wakeUptime, String sleepTime, int id, String userId){
+    public Sleep(String date, String wakeUptime, String sleepTime, int id, String userId){
         this.date = date;
         this.wakeUpTime = wakeUptime;
         this.sleepTime = sleepTime;

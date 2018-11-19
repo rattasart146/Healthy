@@ -15,15 +15,15 @@ import com.example.rattasartpc.healthy.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeightAssetAdapter extends ArrayAdapter <WeightAsset>{
+public class WeightAdapter extends ArrayAdapter <Weight>{
     TextView status;
-    List<WeightAsset> weightAssets = new ArrayList<>();
+    List<Weight> weights = new ArrayList<>();
     Context context;
 
-    public WeightAssetAdapter (@NonNull Context context, int resource, @NonNull List<WeightAsset> objects) {
+    public WeightAdapter(@NonNull Context context, int resource, @NonNull List<Weight> objects) {
         super(context, resource, objects);
         this.context = context;
-        this.weightAssets = objects;
+        this.weights = objects;
     }
 
     @NonNull
@@ -38,11 +38,11 @@ public class WeightAssetAdapter extends ArrayAdapter <WeightAsset>{
         TextView date = weightItem.findViewById(R.id.weight_item_date);
         status = weightItem.findViewById(R.id.weight_item_status);
 
-        weight.setText(weightAssets.get(position).getWeight()+"");
-        date.setText(weightAssets.get(position).getDate());
+        weight.setText(weights.get(position).getWeight()+"");
+        date.setText(weights.get(position).getDate());
 
-        status.setText(weightAssets.get(position).getStatus());
-        statusColor(weightAssets.get(position).getStatus());
+        status.setText(weights.get(position).getStatus());
+        statusColor(weights.get(position).getStatus());
 
         return weightItem;
     }

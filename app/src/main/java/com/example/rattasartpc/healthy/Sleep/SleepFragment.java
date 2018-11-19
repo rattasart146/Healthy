@@ -1,6 +1,5 @@
 package com.example.rattasartpc.healthy.Sleep;
 
-import android.content.SyncStatusObserver;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,16 +12,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.rattasartpc.healthy.MenuActivity;
+import com.example.rattasartpc.healthy.MenuFragment;
 import com.example.rattasartpc.healthy.R;
 import com.example.rattasartpc.healthy.Utils.DBAide;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class SleepActivity extends Fragment{
+public class SleepFragment extends Fragment{
 
-    private ArrayList<sleepAsset> sleeps = new ArrayList<>();
+    private ArrayList<Sleep> sleeps = new ArrayList<>();
     private DBAide dbAide;
     private FirebaseAuth mAuth;
 
@@ -46,21 +45,21 @@ public class SleepActivity extends Fragment{
         mAuth = FirebaseAuth.getInstance();
         sleeps = dbAide.getSleepList(mAuth.getCurrentUser().getUid());
         ListView _sleepList = getView().findViewById(R.id.sleep_list);
-        sleepAssetAdapter _sleepAdapter = new sleepAssetAdapter(getActivity(), R.layout.fragment_sleep_asset, sleeps);
+        SleepAdapter _sleepAdapter = new SleepAdapter(getActivity(), R.layout.fragment_sleep_asset, sleeps);
 
         _sleepList.setAdapter(_sleepAdapter);
         _sleepList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                sleepAsset _clickedSleepItem = (sleepAsset) parent.getItemAtPosition(position);
+                Sleep _clickedSleepItem = (Sleep) parent.getItemAtPosition(position);
                 Bundle bundle = new Bundle();
                 bundle.putString("id", Integer.toString(_clickedSleepItem.getId()));
                 bundle.putString("wakeUpTime", _clickedSleepItem.getWakeUpTime());
                 bundle.putString("sleepTime", _clickedSleepItem.getSleepTime());
                 bundle.putString("date", _clickedSleepItem.getDate());
 
-                sleepForm sleepFormFragment = new sleepForm();
+                SleepForm sleepFormFragment = new SleepForm();
                 sleepFormFragment.setArguments(bundle);
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, sleepFormFragment).commit();
@@ -77,7 +76,7 @@ public class SleepActivity extends Fragment{
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_view, new MenuActivity())
+                        .replace(R.id.main_view, new MenuFragment())
                         .commit();
             }
         });
@@ -90,7 +89,7 @@ public class SleepActivity extends Fragment{
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_view, new sleepForm())
+                        .replace(R.id.main_view, new SleepForm())
                         .commit();
             }
         });

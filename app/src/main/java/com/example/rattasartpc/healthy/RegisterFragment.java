@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class RegisterActivity extends Fragment{
+public class RegisterFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,7 +85,7 @@ public class RegisterActivity extends Fragment{
                             public void onSuccess(AuthResult authResult) {
                                 Log.i("Register", "Complete");
                                 sendVerifiedEmail(authResult.getUser());
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutActivity()).addToBackStack(null).commit();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LogoutFragment()).addToBackStack(null).commit();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

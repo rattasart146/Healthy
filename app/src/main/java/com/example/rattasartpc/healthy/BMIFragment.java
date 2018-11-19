@@ -12,9 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-public class BMIActivity extends Fragment{
+public class BMIFragment extends Fragment{
 
     @Nullable
     @Override
@@ -57,7 +55,7 @@ public class BMIActivity extends Fragment{
             @Override
             public void onClick(View v) {
                 Log.i("BACK", "Back to menu");
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).addToBackStack(null).commit();
             }
         });
     }

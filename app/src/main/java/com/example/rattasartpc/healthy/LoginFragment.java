@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends Fragment {
+public class LoginFragment extends Fragment {
 
     private FirebaseUser _user = FirebaseAuth.getInstance().getCurrentUser();
     @Nullable
@@ -39,7 +39,7 @@ public class LoginActivity extends Fragment {
 
         //Check Loged In
         if(_user != null){
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new MenuActivity()).addToBackStack(null).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new MenuFragment()).addToBackStack(null).commit();
         }
 
         loginButton.setOnClickListener(new View.OnClickListener(){
@@ -67,7 +67,7 @@ public class LoginActivity extends Fragment {
                             if(task.isSuccessful()){
                                 if(_user.isEmailVerified()){
                                     Log.i("LOGIN", "Complete");
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).addToBackStack(null).commit();
                                 }else{
                                     Toast.makeText(getActivity(), "กรุณายืนยัน E-Mail", Toast.LENGTH_SHORT).show();
                                 }
@@ -94,7 +94,7 @@ public class LoginActivity extends Fragment {
 
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new RegisterActivity()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new RegisterFragment()).addToBackStack(null).commit();
             }
         });
 

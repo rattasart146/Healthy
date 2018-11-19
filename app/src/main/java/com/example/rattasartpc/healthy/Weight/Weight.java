@@ -1,13 +1,13 @@
 package com.example.rattasartpc.healthy.Weight;
 
-public class WeightAsset {
+public class Weight {
     float weight;
     String date;
     String status;
-    public WeightAsset(){
+    public Weight(){
 
     }
-    public WeightAsset(float weight, String date, String status) {
+    public Weight(float weight, String date, String status) {
         this.weight = weight;
         this.date = date;
         this.status = status;

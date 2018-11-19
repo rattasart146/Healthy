@@ -27,14 +27,14 @@ import java.util.Calendar;;
 
 public class WeightForm extends Fragment{
 
-    ArrayList<WeightAsset> weightAsset = new ArrayList<>();
+    ArrayList<Weight> weight = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_weight_form, container, false);
     }
-    TextView dateField, weight;
+    TextView dateField, weights;
     Calendar mCurrentDate;
     int mYear, mMonth, mDay;
     String dayStr, monthStr;
@@ -44,7 +44,7 @@ public class WeightForm extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         dateField = (TextView) getView().findViewById(R.id.weight_form_date);
-        weight = (TextView) getView().findViewById(R.id.weight_form_weight);
+        weights = (TextView) getView().findViewById(R.id.weight_form_weight);
         super.onActivityCreated(savedInstanceState);
         mCurrentDate = Calendar.getInstance();
         mYear = mCurrentDate.get(Calendar.YEAR);
@@ -71,7 +71,7 @@ public class WeightForm extends Fragment{
             @Override
             public void onClick(View v) {
                 dateStr = dateField.getText().toString();
-                weightStr = weight.getText().toString();
+                weightStr = weights.getText().toString();
 
                 Log.i("WeightForm",  weight+""+dateStr);
 
@@ -83,7 +83,7 @@ public class WeightForm extends Fragment{
                     //Create Fire Store
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     //Get Weight Obj
-                    final WeightAsset weightStore = new WeightAsset(Float.parseFloat(weight.getText().toString()), dateField.getText().toString(), "-");
+                    final Weight weightStore = new Weight(Float.parseFloat(weights.getText().toString()), dateField.getText().toString(), "-");
                     //Send Data To Database
                     db.collection("myfitness")
                             .document(uid)
@@ -94,7 +94,7 @@ public class WeightForm extends Fragment{
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getActivity(), "เพิ่มข้อมูลเรียบร้อยแล้ว", Toast.LENGTH_LONG).show();
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightActivity()).addToBackStack(null).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightFragment()).addToBackStack(null).commit();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override

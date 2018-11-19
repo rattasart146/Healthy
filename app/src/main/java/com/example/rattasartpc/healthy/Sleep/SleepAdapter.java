@@ -14,13 +14,13 @@ import com.example.rattasartpc.healthy.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sleepAssetAdapter extends ArrayAdapter{
+public class SleepAdapter extends ArrayAdapter{
     private TextView _date, _wakeUpTime, _sleepTime, _periodOfTime;
     private Context context;
-    List<sleepAsset> sleeps = new ArrayList<sleepAsset>();
+    List<Sleep> sleeps = new ArrayList<Sleep>();
 
 
-    public sleepAssetAdapter (@NonNull Context context, int resource, @NonNull List<sleepAsset> objects) {
+    public SleepAdapter(@NonNull Context context, int resource, @NonNull List<Sleep> objects) {
         super(context, resource, objects);
         this.context = context;
         this.sleeps = objects;
@@ -34,7 +34,7 @@ public class sleepAssetAdapter extends ArrayAdapter{
         _sleepTime = _sleepItem.findViewById(R.id.sleep_item_sleep_time);
         _periodOfTime = _sleepItem.findViewById(R.id.sleep_item_time);
 
-        sleepAsset _row = sleeps.get(position);
+        Sleep _row = sleeps.get(position);
 
         String wakeUpTime = _row.getWakeUpTime();
         String sleepTime = _row.getSleepTime();

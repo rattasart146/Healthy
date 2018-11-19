@@ -18,7 +18,7 @@ import com.example.rattasartpc.healthy.Utils.DatePicker;
 import com.example.rattasartpc.healthy.Utils.TimePicker;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class sleepForm extends Fragment{
+public class SleepForm extends Fragment{
 
     private EditText _date, _wakeUpTime, _sleepTime;
     private String _userId;
@@ -125,7 +125,7 @@ public class sleepForm extends Fragment{
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_view, new SleepActivity())
+                        .replace(R.id.main_view, new SleepFragment())
                         .commit();
 
                 Log.d("Sleep Form", "GO TO SLEEP HISTORY");
@@ -139,7 +139,7 @@ public class sleepForm extends Fragment{
         _saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sleepAsset sleep = new sleepAsset();
+                Sleep sleep = new Sleep();
                 sleep.setDate(_date.getText().toString());
                 sleep.setWakeUpTime(_wakeUpTime.getText().toString());
                 sleep.setSleepTime(_sleepTime.getText().toString());
@@ -162,7 +162,7 @@ public class sleepForm extends Fragment{
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_view, new SleepActivity())
+                        .replace(R.id.main_view, new SleepFragment())
                         .commit();
             }
         });

@@ -8,12 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.rattasartpc.healthy.MenuActivity;
+import com.example.rattasartpc.healthy.MenuFragment;
 import com.example.rattasartpc.healthy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,11 +24,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class WeightActivity extends Fragment {
+public class WeightFragment extends Fragment {
     private String uid;
     private FirebaseUser _user = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private ArrayList<WeightAsset> weightAsset = new ArrayList<WeightAsset>();
+    private ArrayList<Weight> weight = new ArrayList<Weight>();
 
     private DocumentSnapshot doc;
     @Override
@@ -41,16 +39,16 @@ public class WeightActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.i("BACK", "Back to menu");
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuActivity()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).addToBackStack(null).commit();
             }
         });
 
         this.uid = _user.getUid();
         final ListView weightList = (ListView) getView().findViewById(R.id.weight_list);
-        final WeightAssetAdapter weightAssetAdapter =  new WeightAssetAdapter(
+        final WeightAdapter weightAdapter =  new WeightAdapter(
                 getActivity(),
                 R.layout.fragment_weight_asset,
-                weightAsset
+                weight
         );
 
         Button addWeightButton = (Button) getView().findViewById(R.id.weight_add);
@@ -60,8 +58,8 @@ public class WeightActivity extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightForm()).addToBackStack(null).commit();
             }
         });
-        weightList.setAdapter(weightAssetAdapter);
-        weightAssetAdapter.clear();
+        weightList.setAdapter(weightAdapter);
+        weightAdapter.clear();
 
 
         db.collection("myfitness").document(uid).collection("weight").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -69,25 +67,25 @@ public class WeightActivity extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot document : task.getResult()) {
-                        weightAsset.add(document.toObject(WeightAsset.class));
+                        weight.add(document.toObject(Weight.class));
                 }
 
                 }
 
-                weightAsset = checkStatus(weightAsset);
+                weight = checkStatus(weight);
 
 
 
 
-                weightAssetAdapter.sort(new Comparator<WeightAsset>() {
+                weightAdapter.sort(new Comparator<Weight>() {
                     @Override
-                    public int compare(WeightAsset o1, WeightAsset o2) {
+                    public int compare(Weight o1, Weight o2) {
                         return o2.getDate().compareTo(o1.getDate());
                     }
                 });
 
-                updateStatusToFirestore(weightAsset);
-                weightAssetAdapter.notifyDataSetChanged();
+                updateStatusToFirestore(weight);
+                weightAdapter.notifyDataSetChanged();
             }
         });
 
@@ -100,27 +98,27 @@ public class WeightActivity extends Fragment {
         return inflater.inflate(R.layout.fragment_weight,container,false);
     }
 
-    private ArrayList<WeightAsset> checkStatus(ArrayList<WeightAsset> weightAsset) {
+    private ArrayList<Weight> checkStatus(ArrayList<Weight> weight) {
         this.uid = _user.getUid();
 
-        for (int i = 1; i < weightAsset.size(); i++) {
-            if (weightAsset.get(i - 1).getWeight() > weightAsset.get(i).getWeight()) {
-                weightAsset.get(i).setStatus("ลง");
-            }else if(weightAsset.get(i - 1).getWeight() == weightAsset.get(i).getWeight()){
-                weightAsset.get(i).setStatus("");
+        for (int i = 1; i < weight.size(); i++) {
+            if (weight.get(i - 1).getWeight() > weight.get(i).getWeight()) {
+                weight.get(i).setStatus("ลง");
+            }else if(weight.get(i - 1).getWeight() == weight.get(i).getWeight()){
+                weight.get(i).setStatus("");
             } else {
-                weightAsset.get(i).setStatus("ขึ้น");
+                weight.get(i).setStatus("ขึ้น");
             }
         }
-        return weightAsset;
+        return weight;
     }
 
-    private void  updateStatusToFirestore(ArrayList<WeightAsset> weightAsset){
+    private void  updateStatusToFirestore(ArrayList<Weight> weight){
         uid = _user.getUid().toString();
-        this.weightAsset = weightAsset;
+        this.weight = weight;
         int index = 0;
-        for(WeightAsset items: this.weightAsset ){
-            db.collection("myfitness").document(uid).collection("weight").document(items.getDate()).set(this.weightAsset.get(index++));
+        for(Weight items: this.weight){
+            db.collection("myfitness").document(uid).collection("weight").document(items.getDate()).set(this.weight.get(index++));
         }
 
     }

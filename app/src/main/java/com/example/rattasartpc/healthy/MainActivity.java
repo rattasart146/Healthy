@@ -3,7 +3,6 @@ package com.example.rattasartpc.healthy;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.rattasartpc.healthy.Weight.WeightActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_view, new LoginActivity())
+                    .replace(R.id.main_view, new LoginFragment())
                     .commit();
         }
 
